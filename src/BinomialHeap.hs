@@ -49,3 +49,9 @@ module BinomialHeap where
     merge (BH ts1) (BH ts2) = BH(mrg ts1 ts2)
     findMin (BH ts)         = fmap (\(t, _) -> root t) (removeMinTree ts)
     deleteMin (BH ts)       = fmap (\(Node _ x ts1, ts2) -> BH(mrg (reverse ts1) ts2)) (removeMinTree ts)
+
+-- 3.5
+-- findMin :: BinomialHeap a -> Maybe a
+-- findMin (BH []) = Nothing
+--     findMin (BH ((Node _ x _):bs)) = Just x
+--     deleteMin (BH ts)       = fmap (\(Node _ x ts1, ts2) -> BH(mrg (reverse ts1) ts2)) (removeMinTree ts)
