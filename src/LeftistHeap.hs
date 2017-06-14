@@ -40,17 +40,18 @@ makeT x a b
 
 -- 3.3
 fromList :: Ord a => [a] -> LeftistHeap a
-fromLsit' []  = E
+fromList []  = E
 fromList list = fromList' $ fmap (\x -> T 1 x E E) list
 
 fromList' :: Ord a => [LeftistHeap a] -> LeftistHeap a
-fromList' [x]     = x
+fromList' []        = E
+fromList' [x]       = x
 fromList' (x:y:xss) = fromList' (xss ++ [merge x y])
 
 toList :: Ord a => LeftistHeap a -> [a]
 toList E = []
 toList (T _ x E E) = [x]
-toList h@(T _ x a b) = x : toList (merge a b)
+toList (T _ x a b) = x : toList (merge a b)
 
 -- 3.4
 -- わからん
