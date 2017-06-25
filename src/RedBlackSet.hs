@@ -18,8 +18,8 @@ instance Set RedBlackSet where
     where
       ins E = T R E x E
       ins s1@(T color E y E)
+        | x > y = T color E y $ T R E x E
         | x < y = T color (T R E x E) y E
-        | x > y = T color E y $ (T R E x E)
         | otherwise = s1
       ins s1@(T color E y b@(T _ _ by _))
         | x < y           = T color (T R E x E) y b
