@@ -80,3 +80,11 @@ partition pivot t@(T a x b)
         else
           let (small, big) = partition pivot a1
           in (small, T big y (T a2 x b))
+
+-- 5.7
+fromList :: Ord a => [a] -> SplayHeap a
+fromList = foldr insert E
+
+toList :: Ord a => SplayHeap a -> [a]
+toList E = []
+toList t = fromJust (findMin t) : toList (fromMaybe E (deleteMin t))
