@@ -3,6 +3,6 @@ module Queue where
 class Queue q where
   empty   :: q a
   isEmpty :: q a -> Bool
-  snoc    :: q a -> a -> q a
+  snoc    :: Ord a => q a -> a -> q a
   head    :: q a -> Maybe a
-  tail    :: q a -> Maybe (q a)
+  tail    :: Ord a => q a -> Maybe (q a)
