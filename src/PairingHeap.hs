@@ -31,7 +31,7 @@ instance Heap PairingHeap where
 
   deleteMin :: Ord a => PairingHeap a -> Maybe (PairingHeap a)
   deleteMin E = Nothing
-  deleteMin (T x hs) = Just $ mergePair hs
+  deleteMin (T _ hs) = Just $ mergePair hs
 
 mergePair :: Ord a => [PairingHeap a] -> PairingHeap a
 mergePair [] = E
